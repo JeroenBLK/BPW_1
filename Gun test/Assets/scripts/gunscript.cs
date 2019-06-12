@@ -9,11 +9,13 @@ public class gunscript : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
+    private AudioSource mAudioSrc;
+
     public Rigidbody rb;
 
-    private void Start()
+    void Start()
     {
-
+        mAudioSrc = GetComponent<AudioSource>();
     }
 
 
@@ -23,8 +25,7 @@ public class gunscript : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
-
-            //rb.AddForce(-50, -50, 0, ForceMode.Impulse);
+            mAudioSrc.Play();
         }
 
     }

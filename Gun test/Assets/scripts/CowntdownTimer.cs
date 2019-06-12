@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -8,13 +6,17 @@ using UnityEngine.SceneManagement;
 public class CowntdownTimer : MonoBehaviour
 {
     float currentTime = 0f;
-    float startingTime = 10f;
+    float startingTime = 30f;
+    AudioSource myAudio;
 
     [SerializeField] Text countdownText;
 
     private void Start()
     {
         currentTime = startingTime;
+
+        myAudio = GetComponent<AudioSource>();
+        myAudio.PlayDelayed(19.0f);
     }
 
     private void Update()
@@ -25,6 +27,12 @@ public class CowntdownTimer : MonoBehaviour
         if(currentTime <= 0)
         {
             SceneManager.LoadScene("MainMenu");
+        }
+
+        if(currentTime <= 10)
+        {
+            countdownText.color = Color.red;
+            
         }
     }
 
